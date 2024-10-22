@@ -1,4 +1,14 @@
+"use client";
+
+import { useForm } from "react-hook-form";
+
 export default function Login() {
+  const { register, handleSubmit } = useForm();
+
+  function handleSignIn(data: any) {
+    console.log("data ===>", data);
+  }
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -14,7 +24,12 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form
+            action="#"
+            method="POST"
+            className="space-y-6"
+            onSubmit={handleSubmit(handleSignIn)}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -24,12 +39,13 @@ export default function Login() {
               </label>
               <div className="mt-2">
                 <input
+                  {...register("email")}
                   id="email"
                   name="email"
                   type="email"
                   required
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2"
                 />
               </div>
             </div>
@@ -53,12 +69,13 @@ export default function Login() {
               </div>
               <div className="mt-2">
                 <input
+                  {...register("password")}
                   id="password"
                   name="password"
                   type="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2"
                 />
               </div>
             </div>
