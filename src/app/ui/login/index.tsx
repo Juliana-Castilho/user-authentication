@@ -10,7 +10,13 @@ export default function Login() {
 
   async function handleSignIn(data) {
     //TODO: Try Catch
-    await signIn(data);
+    try {
+      signIn(data);
+    } catch {
+      console.log("ERRO");
+    } finally {
+      console.log("DATA ===>", data);
+    }
   }
 
   return (

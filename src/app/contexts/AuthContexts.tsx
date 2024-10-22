@@ -61,8 +61,6 @@ export function AuthProvider({ children }: TAuthProviderProps) {
 
     setUser(user);
 
-    console.log("TOKEN", token);
-
     redirect(PATH);
   };
 

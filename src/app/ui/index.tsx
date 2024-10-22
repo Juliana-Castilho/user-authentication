@@ -1,30 +1,20 @@
 import Image from "next/image";
 import Head from "next/head";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContexts";
 import { api } from "../services/api";
-import { GetServerSideProps } from "next";
-import nookies from "nookies";
-// import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const PATH = "/login";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
-
-  useEffect(() => {
-    const cookies = nookies.get(null);
-    const token = cookies["nextauth-token"];
-
-    if (!token) {
-      return redirect(PATH);
-    }
-  }, []);
+  const [authUser, setAuthUser] = useState("");
 
   useEffect(() => {
     api.get("/user");
-  }, []);
+    setAuthUser(user);
+  }, [user]);
 
   return (
     <div>
@@ -42,10 +32,3 @@ export default function Home() {
     </div>
   );
 }
-
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   console.log("CTX ===>", ctx.req.cookies);
-//   return {
-//     props: {},
-//   };
-// };

@@ -9,7 +9,7 @@ export const api = axios.create({
 
 // Opção do Next para interceptar os dados que estão sendo enviados. Uma solução para conferir, uma vez que não temos a rota 3333 e nem um backend de fato.
 api.interceptors.request.use(config => {
-  console.log(config);
+  console.log("API", config);
 
   return config;
 })
