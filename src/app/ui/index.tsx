@@ -2,19 +2,9 @@ import Image from "next/image";
 import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContexts";
-import { api } from "../services/api";
-import { redirect } from "next/navigation";
-
-const PATH = "/login";
 
 export default function Home() {
   const { user } = useContext(AuthContext);
-  const [authUser, setAuthUser] = useState("");
-
-  useEffect(() => {
-    api.get("/user");
-    setAuthUser(user);
-  }, [user]);
 
   return (
     <div>
